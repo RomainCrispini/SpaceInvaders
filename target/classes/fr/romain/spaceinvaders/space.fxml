@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.romain.spaceinvaders.SpaceController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.7;">
+         <image>
+            <Image url="@images/background.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="board" prefHeight="600.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="lblEndGame" alignment="CENTER" contentDisplay="CENTER" prefHeight="600.0" prefWidth="600.0" textAlignment="CENTER" textFill="#009402">
+               <font>
+                  <Font name="Arial Bold" size="85.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009402" height="5.0" stroke="BLACK" strokeType="INSIDE" width="540.0" x="30.0" y="530.0" />
+      <Pane layoutY="535.0" prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: black;" />
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="535.0" prefHeight="65.0" prefWidth="540.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onStartAction" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-width: 2; -fx-border-radius: 10; -fx-border-color: #009402;" text="Start" textFill="#009402">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onStopAction" prefHeight="37.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-width: 2; -fx-border-color: #7e0000; -fx-border-style: solid;" text="Stop" textFill="#7e0000">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="lblFPS" style="-fx-border-width: 2; -fx-border-color: #b47500; -fx-border-radius: 10; -fx-pref-height: 40; -fx-pref-width: 75; -fx-alignment: center;" text="FPS : " textFill="#b47500" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="170.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </Label>
+            <Label fx:id="lblLeftScore" text="Score : " textFill="#009402" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblRightScore" text="1000" textFill="#009402" visible="false">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fx:id="imgLogo" fitHeight="407.0" fitWidth="472.0" layoutX="60.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/logoSpaceInvaders.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
