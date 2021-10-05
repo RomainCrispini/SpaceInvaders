@@ -12,10 +12,10 @@ public abstract class Constants {
     public static final int WINDOW_MARGIN = 50;
 
     /********************* SHIP *********************/
-    public static final int SHIP_WIDTH = 39;
-    public static final int SHIP_HEIGHT = 24;
+    public static final int SHIP1_WIDTH = 39;
+    public static final int SHIP1_HEIGHT = 24;
 
-    public static final int X_POS_INIT_SHIP = (WINDOW_WIDTH - SHIP_WIDTH) / 2;
+    public static final int X_POS_INIT_SHIP = (WINDOW_WIDTH - SHIP1_WIDTH) / 2;
     public static final int Y_POS_INIT_SHIP = 505;
     public static final int SHIP_DELTAX = 5;
 

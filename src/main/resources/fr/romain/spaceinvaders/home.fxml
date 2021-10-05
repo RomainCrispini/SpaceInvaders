@@ -1,19 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.romain.spaceinvaders.HomeController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.romain.spaceinvaders.HomeController">
    <children>
-      <Button layoutX="135.0" layoutY="351.0" mnemonicParsing="false" onAction="#gameOnAction" text="Jeu" />
-      <TextField fx:id="tfTest" layoutX="220.0" layoutY="351.0" />
-      <ImageView fitHeight="289.0" fitWidth="326.0" layoutX="137.0" layoutY="-43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.7;">
          <image>
-            <Image url="@images/logoSpaceInvaders.png" />
+            <Image url="@images/background.png" />
          </image>
       </ImageView>
+      <VBox alignment="TOP_CENTER" prefHeight="340.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="215.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logoSpaceInvadersSmall.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="50.0" top="50.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Choose a ship !" textFill="#009402">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="520.0" spacing="20.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#ship1Choice" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/menuShip1.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Circle fx:id="choice1Circle" fill="#009402" radius="5.0" stroke="BLACK" strokeType="INSIDE">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Circle>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" onMouseClicked="#ship2Choice" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/menuShip2.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Circle fx:id="choice2Circle" fill="#009402" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Circle>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </HBox>
+            <Label text="Enter your name" textFill="#009402">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="tfUsername">
+               <VBox.margin>
+                  <Insets left="100.0" right="100.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblValidation" text="You must enter a name with at least 3 characters" textFill="#7e0000" visible="false" />
+         </children>
+      </VBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#009402" height="5.0" stroke="BLACK" strokeType="INSIDE" width="540.0" x="30.0" y="530.0" />
+      <Pane layoutY="535.0" prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: black;" />
+      <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="535.0" prefHeight="65.0" prefWidth="540.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#gameOnAction" prefHeight="32.0" prefWidth="65.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-width: 1; -fx-border-radius: 10; -fx-border-color: #009402;" text="Start" textFill="#009402">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#highScoreOnAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-style: solid; -fx-border-width: 1; -fx-border-radius: 10; -fx-border-color: #b47500;" text="High Score" textFill="#b47500">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

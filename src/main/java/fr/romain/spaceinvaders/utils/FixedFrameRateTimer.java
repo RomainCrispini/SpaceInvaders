@@ -2,6 +2,8 @@ package fr.romain.spaceinvaders.utils;
 
 import javafx.animation.AnimationTimer;
 
+import java.sql.SQLException;
+
 public abstract class FixedFrameRateTimer extends AnimationTimer {
 
     private final long timeNeededBetweenTicks;

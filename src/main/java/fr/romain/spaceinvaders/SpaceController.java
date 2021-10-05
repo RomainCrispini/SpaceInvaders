@@ -1,18 +1,26 @@
 package fr.romain.spaceinvaders;
 
 import fr.romain.spaceinvaders.entities.*;
+import fr.romain.spaceinvaders.repository.RecordInformations;
 import fr.romain.spaceinvaders.utils.*;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.util.*;
 
 public class SpaceController implements Sounds {
@@ -31,6 +39,8 @@ public class SpaceController implements Sounds {
     private Saucer saucer;
     private int saucerTime = 0;
     private static final Rectangle saucer100Rect = new Rectangle();
+
+    // Propriétés issues du HomeController
     private static int shipNumberFromHome;
 
     @FXML
@@ -40,9 +50,15 @@ public class SpaceController implements Sounds {
     private Pane board;
 
     @FXML
-    private Label lblEndGame, lblLeftScore, lblRightScore, lblFPS;
+    private Label lblEndGame, lblLeftScore, lblCenterScore, lblRightScore, lblFPS;
 
-    //TODO TEST DE TRANSFERT DE DONNEES
+    // Méthodes issues du HomeController
+    public void transferUsername(String username) {
+        if (!username.isEmpty()) {
+            lblLeftScore.setText(username);
+        }
+    }
+
     public void transferShipNumber(int shipNumber) {
         switch (shipNumber) {
             case 1:
@@ -52,10 +68,6 @@ public class SpaceController implements Sounds {
                 shipNumberFromHome = 2;
                 break;
         }
-    }
-
-    public void test(String response) {
-
     }
 
     public SpaceController() {
@@ -96,7 +108,7 @@ public class SpaceController implements Sounds {
 
     private void initGame(int shipNumberFromHome) {
         ship = new Ship(Constants.X_POS_INIT_SHIP, Constants.Y_POS_INIT_SHIP,
-                Constants.SHIP_WIDTH, Constants.SHIP_HEIGHT);
+                Constants.SHIP1_WIDTH, Constants.SHIP1_HEIGHT);
         switch (shipNumberFromHome) {
             case 1:
                 ship.setFill(new ImagePattern(Images.SHIP1));
@@ -131,6 +143,7 @@ public class SpaceController implements Sounds {
             lblRightScore.textProperty().bind(Bindings.convert(score));
             // On rend visible les deux labels qui concernent le score
             lblLeftScore.setVisible(true);
+            lblCenterScore.setVisible(true);
             lblRightScore.setVisible(true);
             lblFPS.setVisible(true);
             score.set(0);
@@ -379,7 +392,7 @@ public class SpaceController implements Sounds {
     }
 
     @FXML
-    void onStopAction() {
+    void onStopAction(ActionEvent actionEvent) throws IOException {
         timer.stop();
         initStartButton = false;
         walls.clear();
@@ -392,11 +405,27 @@ public class SpaceController implements Sounds {
 
         // On rend invisible les trois labels qui concernent le score ET les FPS
         lblLeftScore.setVisible(false);
+        lblCenterScore.setVisible(false);
         lblRightScore.setVisible(false);
         lblFPS.setVisible(false);
 
         // On enclenche la translation ET le fade out du logo Space Invaders
         Animation.animateLogoSpaceInvaders(imgLogo, -500, 0, 600, 0, 1, 900);
+
+        // On met à jour la BDD
+        try {
+            RecordInformations.updateUser(lblLeftScore.getText(), Integer.parseInt(lblRightScore.getText()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Et enfin, on retourne sur l'écran de choix
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void endGame() {
@@ -423,7 +452,7 @@ public class SpaceController implements Sounds {
             groupExplosionShip.setLayoutX(ship.getX() - 10);
             groupExplosionShip.setLayoutY(ship.getY() - 60);
             board.getChildren().addAll(groupExplosionShip);
-            ship.setX(-Constants.SHIP_WIDTH);
+            ship.setX(-Constants.SHIP1_WIDTH);
             ship.setY(0);
             board.getChildren().remove(ship);
             Audio.playSound(SHIP_DESTRUCTION);
