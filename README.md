@@ -1,5 +1,4 @@
-SpaceInvaders As the Famous Game
-With Fantastics Explosions !!!
+JavaFX<br>SpaceInvaders As the Famous Game<br>With Fantastics Explosions !!!
 
 ![alt text](https://github.com/RomainCrispini/SpaceInvaders/blob/master/SpaceCover1.png?raw=true)
 ![alt text](https://github.com/RomainCrispini/SpaceInvaders/blob/master/SpaceCover2.png?raw=true)
