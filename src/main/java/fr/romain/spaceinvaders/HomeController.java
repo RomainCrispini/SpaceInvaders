@@ -48,7 +48,7 @@ public class HomeController implements Initializable {
     public void gameOnAction(ActionEvent actionEvent) throws IOException, SQLException {
 
         // On vérifie d'abord la validité de l'input
-        if (Validation.getValidation(tfUsername.getText())) {
+        if (Validation.getHomeNameValidation(tfUsername.getText())) {
             lblValidation.setVisible(false);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("space.fxml"));
             Parent root = loader.load();

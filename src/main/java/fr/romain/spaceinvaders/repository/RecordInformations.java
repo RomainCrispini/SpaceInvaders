@@ -44,7 +44,7 @@ public class RecordInformations {
         return usersList;
     }
 
-    public static void createUser(String username) throws SQLException {
+    public static void createUser(String username) {
 
         DataBaseConnection dataBaseConnection = new DataBaseConnection();
         Connection connection = dataBaseConnection.getConnection();
@@ -66,7 +66,7 @@ public class RecordInformations {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Erreur dans le SELECT *");
+            System.out.println("Erreur dans le SELECT");
         }
     }
 

@@ -1,7 +1,7 @@
 package fr.romain.spaceinvaders.utils;
 
 // On peut passer Sounds en Interface de manière à appeler ses propriétés plus facilement
-// (plutôt que de passer par une classe)
+// (plutôt que de passer par une classe, même abstraite)
 public interface Sounds {
 
     String PATH = "File:./src/main/resources/fr/romain/spaceinvaders/sounds/";
