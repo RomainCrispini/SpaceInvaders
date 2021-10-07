@@ -7,10 +7,10 @@ public class DataBaseConnection {
 
     private final String DB = "space_invaders";
     private final String USER = "root";
-    private final String SOCKET = "3307";
+    private final String PORT = "3307";
     private final String PASSWORD = "MariaDBRomain1895+";
     //private final String URL = "jdbc:mysql://localhost:" + SOCKET + "/" + DB; <---- mySQL
-    private final String URL = "jdbc:mariadb://192.168.1.1%:" + SOCKET + "/" + DB; // <--- MariaDB
+    private final String URL = "jdbc:mariadb://192.168.1.20.%:" + PORT + "/" + DB; // <--- MariaDB
     private Connection databaseLink;
 
     public Connection getConnection() {
