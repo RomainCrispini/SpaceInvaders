@@ -15,7 +15,6 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -45,7 +44,7 @@ public class HomeController implements Initializable {
 
     // Au click sur le bouton GO, on transfert le username ET le numéro du vaisseau
     @FXML
-    public void gameOnAction(ActionEvent actionEvent) throws IOException, SQLException {
+    public void gameOnAction(ActionEvent actionEvent) throws IOException {
 
         // On vérifie d'abord la validité de l'input
         if (Validation.getHomeNameValidation(tfUsername.getText())) {

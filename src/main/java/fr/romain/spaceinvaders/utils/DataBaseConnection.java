@@ -21,10 +21,10 @@ public class DataBaseConnection {
 
     public Connection getConnection() {
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver"); // <--- mySQL
-            Class.forName("org.mariadb.jdbc.Driver"); // <--- MariaDB
-            //databaseLink = DriverManager.getConnection(URL, USER, PASSWORD); // <--- mySQL
-            databaseLink = DriverManager.getConnection("jdbc:mariadb://192.168.1.20.%:3307/space_invaders?user=root&password=MariaRomain123+"); // <--- MariaDB
+            Class.forName("com.mysql.cj.jdbc.Driver"); // <--- mySQL
+            //Class.forName("org.mariadb.jdbc.Driver"); // <--- MariaDB
+            databaseLink = DriverManager.getConnection(URL, USER, PASSWORD); // <--- mySQL
+            //databaseLink = DriverManager.getConnection("jdbc:mariadb://192.168.1.20.%:3307/space_invaders?user=root&password=MariaRomain123+"); // <--- MariaDB
             System.out.println("Connecté !!!");
         } catch (Exception e) {
             e.printStackTrace();

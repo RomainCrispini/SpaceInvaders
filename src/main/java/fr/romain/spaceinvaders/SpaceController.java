@@ -25,6 +25,9 @@ import java.util.*;
 
 public class SpaceController implements Sounds {
 
+    // TODO TEST
+    private List<Brick> deadBricks = new LinkedList<>();
+
     private Ship ship;
     private ShipShot shipShot;
     private final FixedFrameRateTimer timer;
@@ -34,7 +37,7 @@ public class SpaceController implements Sounds {
     private static long movingAliensCount;
     private final IntegerProperty score = new SimpleIntegerProperty(0);
     private static boolean initStartButton = false;
-    private static Random random = new Random();
+    private static final Random random = new Random();
     private static LinkedList<AlienShot> alienShotList;
     private Saucer saucer;
     private int saucerTime = 0;
@@ -275,7 +278,7 @@ public class SpaceController implements Sounds {
         // Collision avec une Brick brick
         try {
             for (Brick brick : walls) {
-                if (brick.getBoundsInParent().intersects(shipShot.getBoundsInParent())) {
+                if (shipShot.getBoundsInParent().intersects(brick.getBoundsInParent())) {
                     // On replace le tir hors du board
                     shipShot.setX(-10);
                     shipShot.setY(-10);
